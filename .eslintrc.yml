@@ -1,0 +1,30 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - airbnb-base
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:prettier/recommended
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - prettier
+rules:
+  '@typescript-eslint/explicit-function-return-type': error
+  '@typescript-eslint/indent': off
+settings:
+  import/resolver:
+    node:
+      extensions:
+        - .js
+        - .jsx
+        - .ts
+        - .tsx

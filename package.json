@@ -1,0 +1,55 @@
+{
+  "build-ts": "tsc",
+  "watch-ts": "tsc -w",
+  "name": "revolve",
+  "version": "0.0.1",
+  "description": "A portable and modular e-commerce subscription platform",
+  "dependencies": {
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.7",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "scripts": {
+    "build-ts": "tsc",
+    "fix": "eslint . --ext .js,.ts --fix",
+    "lint": "tsc --noEmit && eslint . --ext .js,.ts",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "watch": "nodemon dist/index.js",
+    "watch-test": "jest --watch",
+    "watch-ts": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhippenmeyer/revolve.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "subscription",
+    "billing",
+    "recurring"
+  ],
+  "author": "Nicholas Hippenmeyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhippenmeyer/revolve/issues"
+  },
+  "homepage": "https://github.com/nhippenmeyer/revolve#readme"
+}

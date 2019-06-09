@@ -1,0 +1,67 @@
+version: 2.1
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:10.16.0
+
+steps:
+  - &add-ssh-keys
+    add_ssh_keys:
+      fingerprints:
+        - 9b:ec:eb:e3:eb:83:19:27:6e:cf:81:7e:ef:c8:ec:00
+
+  - &restore-cache
+    restore_cache:
+      keys:
+        - v2-node-packages-{{ checksum "~/project/package-lock.json" }}
+        - v2-node-packages-
+
+  - &save-cache
+    save_cache:
+      key: v2-node-packages-{{ checksum "~/project/package-lock.json" }}
+      paths:
+        - ~/node_modules
+
+  - &install-dependencies
+    run:
+      name: Install node packages
+      command: npm install
+
+  - &build-application
+    run:
+      name: Build application
+      command: npm run build-ts
+
+jobs:
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-dependencies
+      - *save-cache
+      - *build-application
+      - run:
+          name: Run linter
+          command: npm run lint
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-dependencies
+      - *save-cache
+      - *build-application
+      - run:
+          name: Run unit tests
+          command: npm test
+
+workflows:
+  version: 2
+  lint-and-test:
+    jobs:
+      - lint
+      - test:
+          requires:
+            - lint
