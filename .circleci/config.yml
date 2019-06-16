@@ -30,7 +30,7 @@ steps:
   - &build-application
     run:
       name: Build application
-      command: npm run build-ts
+      command: npm run build
 
 jobs:
   lint:
