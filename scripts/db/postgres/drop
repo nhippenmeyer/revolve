@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -eux
-
-# Drop database
-dropdb revolve
-
-# Drop user
-dropuser revolve

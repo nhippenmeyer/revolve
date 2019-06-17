@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -eux
-
-# Create user
-createuser revolve
-
-# Create database
-createdb revolve

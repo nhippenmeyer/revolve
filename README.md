@@ -4,25 +4,17 @@
 
 ## Getting Started
 
-### Application Dependencies
+### Install Dependencies
 
 [Install node.js](https://nodejs.org/en/) (v10.16.0). If using [nvm](https://github.com/nvm-sh/nvm) the correct version can be automatically installed by running: `nvm install`
 
-Install dependencies: `npm install`
+Install node modules: `npm install`
 
 ### Database
 
 #### Postgres
 
 Install postgres: `brew install postgres # macOS`
-
-##### Scripts
-
-```bash
-scripts/db/postgres/setup # Setup database
-scripts/db/postgres/drop # Drop database
-scripts/db/postgres/reset # Reset database
-```
 
 ## Available Scripts
 
@@ -41,6 +33,18 @@ npm run db:migrate # migrate database
 npm run db:migration:generate <migration_name> # generate migration
 ```
 
+#### Postgres
+
+```bash
+# Development
+npm run db:postgres:create # Create database
+npm run db:postgres:drop # Drop database
+npm run db:postgres:reset # Reset database
+
+# Test
+npm run db:postgres:create:test # Create test database
+```
+
 ### Running the Application
 
 ```bash
@@ -53,6 +57,7 @@ npm run watch # watch mode
 ```bash
 npm run lint
 npm run fix # fix errors
+npm run watch-eslint # watch mode
 ```
 
 ### Testing

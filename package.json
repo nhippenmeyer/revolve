@@ -7,7 +7,8 @@
     "pg": "^7.11.0",
     "reflect-metadata": "^0.1.10",
     "typeorm": "0.2.18",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "xstate": "^4.6.1"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
@@ -20,6 +21,7 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-watch": "^5.1.2",
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
@@ -34,11 +36,16 @@
     "clean": "rm -rf dist",
     "db:migrate": "node_modules/.bin/typeorm migration:run",
     "db:migration:generate": "node_modules/.bin/typeorm migration:generate -n",
+    "db:postgres:create": "createdb revolve_development",
+    "db:postgres:create:test": "createdb revolve_test",
+    "db:postgres:drop": "dropdb revolve_development",
+    "db:postgres:reset": "npm run db:postgres:drop && npm run db:postgres:create",
     "fix": "eslint . --ext .js,.ts --fix",
     "lint": "tsc --noEmit && eslint . --ext .js,.ts",
     "start": "node dist/index.js",
     "test": "jest",
     "watch": "nodemon dist/index.js",
+    "watch-eslint": "node_modules/.bin/esw . --ext .js,.ts --color -w --watch-ignore dist",
     "watch-test": "jest --watch",
     "watch-ts": "npm run clean && tsc -w"
   },

@@ -1,18 +1,29 @@
-default:
-  cli:
-    entitiesDir: src/entities
-    migrationsDir: src/db/migrations
-  database: revolve
-  entities:
-    - dist/entities/**/*.js
+defaults: &defaults
   entityPrefix: revolve_
   host: localhost
   logging: false
-  migrations:
-    - dist/db/migrations/*.js
-  migrationsTableName: revolve_migration
   password: revolve
   port: 5432
-  synchronize: false
   type: postgres
   username: revolve
+
+development:
+  <<: *defaults
+  cli:
+    entitiesDir: src/entity
+    migrationsDir: src/db/migration
+  database: revolve_development
+  entities:
+    - dist/entity/**/*.js
+  migrations:
+    - dist/db/migration/*.js
+  migrationsTableName: revolve_migration
+  synchronize: false
+
+test:
+  <<: *defaults
+  database: revolve_test
+  dropSchema: true
+  entities:
+    - src/entity/**/*.ts
+  synchronize: true

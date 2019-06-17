@@ -1,8 +1,0 @@
-#!/bin/bash
-
-set -eux
-
-DIR=`dirname $0`
-
-$DIR/drop &&
-$DIR/setup

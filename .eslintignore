@@ -1,2 +1,2 @@
 dist
-src/db/migrations
+src/db/migration
